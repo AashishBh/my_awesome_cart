@@ -37,7 +37,13 @@
            padding-left: 0,
            padding-right: 0;
            }
+          table{
+          margin-top: 100px;
+          margin-left: auto;
+          margin-right: auto;
+          width: 70%;
 
+          }
 
     </style>
 </head>
@@ -245,7 +251,6 @@
         </div>
     </div>
 </div>
-
 <!-- left and right controls for the slide -->
 <a class="carousel-control-prev" href="#demo" data-slide="prev">
     <span class="carousel-control-prev-icon"></span>
@@ -254,7 +259,32 @@
     <span class="carousel-control-next-icon"></span>
 </a>
 
-
+<!--showing list of all items from product model -->
+{% if product_list %}
+    <table border="2">
+     <tr>
+         <th>ID</th>
+         <th>Product Name</th>
+         <th>Category</th>
+         <th>Sub Cateogry</th>
+         <th>Price </th>
+         <th>Description </th>
+         <th>Published Date </th>
+         <th>Image </th>
+     </tr>
+ <tr>
+    {% for x in product_list %}
+     <td>{{x.product_id}}</td>
+     <td>{{x.product_name}}</td>
+     <td>{{x.category}}</td>
+     <td>{{x.sub_category}}</td>
+     <td>{{x.price}}</td>
+     <td>{{x.desc}}</td>
+     <td>{{x.pub_date}}</td>
+     <td>{% load static %} <img src=x.image> </td>
+ </tr>
+     {% endfor %}
+     {% endif %}
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
